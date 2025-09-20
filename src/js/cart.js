@@ -1,6 +1,6 @@
 import { getLocalStorage } from "./utils.mjs";
 
-//Fixed Empty Cart Error Individual activity. by adding a check for empty cart, also added "|| []" to avoid error if cart is empty.
+//Fixed Empty Cart Error Individual activity. by adding a check for empty cart, also added "(if null)|| (use empty array)[]" to avoid error if cart is empty.
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart") || [];//added "|| []" to avoid error if cart is empty
   if (cartItems.length === 0) {
