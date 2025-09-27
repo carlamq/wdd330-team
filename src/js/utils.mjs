@@ -36,3 +36,29 @@ export function renderListWithTemplate(template, parentElement, list, position =
   }
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
+
+// team activity week 3
+export function renderWithTemplate(template, parentElement, data, callback) {
+  parentElement.innerHTML = template;
+  if (callback) {
+    callback(data);
+  }
+}
+
+export async function loadTemplate(path) {
+  const res = await fetch(path);
+  const template = await res.text();
+  return template;
+}
+
+export async function loadHeaderFooter() {
+  // Load the header and footer templates in from the partials using the loadTemplate
+  const header = await loadTemplate("/partials/header.html");
+  const footer = await loadTemplate("/partials/footer.html");
+  // Grab the header and footer placeholder elements out of the DOM.
+  const headerElement = document.querySelector("#main-header");
+  const footerElement = document.querySelector("#main-footer");
+  // Render the header and footer using renderWithTemplate.
+  renderWithTemplate(header, headerElement);
+  renderWithTemplate(footer, footerElement);
+}
