@@ -1,3 +1,5 @@
+// utils.mjs
+
 // wrapper for querySelector...returns matching element
 export function qs(selector, parent = document) {
   return parent.querySelector(selector);
@@ -35,4 +37,16 @@ export function renderListWithTemplate(template, parentElement, list, position =
     parentElement.innerHTML = "";
   }
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+}
+
+// Function to load the header and footer templates.
+// This is the function that was missing and caused the build failure.
+export async function loadHeaderFooter() {
+  const header = await fetch("../partials/header.html");
+  const headerContent = await header.text();
+  const footer = await fetch("../partials/footer.html");
+  const footerContent = await footer.text();
+
+  document.getElementById("main-header").innerHTML = headerContent;
+  document.getElementById("main-footer").innerHTML = footerContent;
 }
