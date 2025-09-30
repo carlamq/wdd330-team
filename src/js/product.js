@@ -8,7 +8,6 @@ const productID = getParam("product");
 
 function addProductToCart(item) {
   let cart = getLocalStorage("so-cart") || [];
-  
   // Check if item already exists in cart
   const existingItem = cart.find(cartItem => cartItem.Id === item.Id);
   
@@ -31,9 +30,10 @@ async function addToCartHandler(e) {
 }
 
 // add listener to Add to Cart button
-document
-  .getElementById("addToCart")
-  .addEventListener("click", addToCartHandler);
+// COMMENTED OUT: This conflicts with ProductDetails.mjs event listener
+// document
+//   .getElementById("addToCart")
+//   .addEventListener("click", addToCartHandler);
 
 const product = new ProductDetails(productID, dataSource);
 product.init();

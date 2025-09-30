@@ -21,10 +21,22 @@ export default class ProductDetails {
   }
 
   addProductToCart() {
-    const cartItems = getLocalStorage("so-cart") || [];
-    cartItems.push(this.product);
-    setLocalStorage("so-cart", cartItems);
-  }
+    let cart = getLocalStorage("so-cart") || [];
+    
+    // Check if item already exists in cart
+    const existingItem = cart.find(cartItem => cartItem.Id === this.product.Id);
+    
+    if (existingItem) {
+        // If item exists, increment quantity
+        existingItem.quantity = (existingItem.quantity || 1) + 1;
+    } else {
+        // If item doesn't exist, add it with quantity 1
+        this.product.quantity = 1;
+        cart.push(this.product);
+    }
+
+    setLocalStorage("so-cart", cart);
+}
 
   renderProductDetails() {
     productDetailsTemplate(this.product);
