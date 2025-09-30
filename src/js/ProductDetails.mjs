@@ -27,16 +27,17 @@ export default class ProductDetails {
     const existingItem = cart.find(cartItem => cartItem.Id === this.product.Id);
     
     if (existingItem) {
-      // If item exists, increment quantity
-      existingItem.quantity = (existingItem.quantity || 1) + 1;
-    } else {
-      // If item doesn't exist, add it with quantity 1
-      this.product.quantity = 1;
-      cart.push(this.product);
+        // If item exists, increment quantity
+        existingItem.quantity = (existingItem.quantity || 1) + 1;
+    }
+    else {
+        // If item doesn't exist, add it with quantity 1
+        this.product.quantity = 1;
+        cart.push(this.product);
     }
 
     setLocalStorage("so-cart", cart);
-  }
+}
 
   renderProductDetails() {
     productDetailsTemplate(this.product);
