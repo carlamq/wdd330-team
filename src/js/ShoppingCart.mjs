@@ -6,10 +6,19 @@ function cartItemTemplate(item) {
     const quantity = item.quantity || 1;
     const totalPrice = (item.FinalPrice * quantity).toFixed(2);
     
+    let imageUrl = '';
+    if (item.Images && item.Images.PrimaryMedium) {
+        imageUrl = item.Images.PrimaryMedium;
+    } else if (item.Image) {
+        imageUrl = item.Image;
+    } else {
+        imageUrl = '/images/placeholder.jpg'; // fallback
+    }
+    
     const newItem = `<li class="cart-card divider">
     <a href="#" class="cart-card__image">
       <img
-        src="${item.Image}"
+        src="${imageUrl}"
         alt="${item.Name}"
       />
     </a>
