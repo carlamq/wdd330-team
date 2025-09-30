@@ -6,6 +6,7 @@ import { loadHeaderFooter } from "./utils.mjs";
 const dataSource = new ProductData();
 const productID = getParam("product");
 
+
 function addProductToCart(item) {
   let cart = getLocalStorage("so-cart") || [];
   // Check if item already exists in cart
