@@ -151,6 +151,31 @@ button {
   text-align: center;
 }
 
+/* four product categories */
+
+.categories {
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.category-grid a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.category-grid img {
+  width: 35%;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+
 .products {
   margin-top: 2rem;
   padding: 1rem;
