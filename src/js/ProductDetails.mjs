@@ -29,7 +29,8 @@ export default class ProductDetails {
     if (existingItem) {
         // If item exists, increment quantity
         existingItem.quantity = (existingItem.quantity || 1) + 1;
-    } else {
+    }
+    else {
         // If item doesn't exist, add it with quantity 1
         this.product.quantity = 1;
         cart.push(this.product);
