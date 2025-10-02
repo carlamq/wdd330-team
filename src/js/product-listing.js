@@ -10,7 +10,8 @@ const category = getParam("category");
 const titleElement = document.querySelector(".title");
 if (titleElement && category) {
   // Capitalize first letter and replace hyphens with spaces
-  const formattedCategory = category.charAt(0).toUpperCase() + category.slice(1).replace("-", " ");
+  const formattedCategory =
+    category.charAt(0).toUpperCase() + category.slice(1).replace("-", " ");
   titleElement.textContent = formattedCategory;
 }
 

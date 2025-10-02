@@ -6,12 +6,11 @@ import { loadHeaderFooter } from "./utils.mjs";
 const dataSource = new ProductData();
 const productID = getParam("product");
 
-
 function addProductToCart(item) {
   let cart = getLocalStorage("so-cart") || [];
   // Check if item already exists in cart
-  const existingItem = cart.find(cartItem => cartItem.Id === item.Id);
-  
+  const existingItem = cart.find((cartItem) => cartItem.Id === item.Id);
+
   if (existingItem) {
     // If item exists, increment quantity
     existingItem.quantity = (existingItem.quantity || 1) + 1;
