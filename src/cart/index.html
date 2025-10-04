@@ -1,64 +1,38 @@
 <!doctype html>
-
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sleep Outside | Cart</title>
 
-    <title>Sleep Outside | Cart</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
 
-    <link rel="stylesheet" href="/css/style.css" />
+<body class="cart-page">
+  <header id="main-header" class="divider"></header>
 
-    <script src="../js/cart.js" type="module"></script>
-  </head>
+  <main class="divider">
+    <h1>Your Cart</h1>
+    <div id="cart-items">
+      <!-- Cart items will be rendered here by cart.mjs -->
+    </div>
 
-  <body>
-    <header class="divider" id="main-header">
-      <!-- JavaScript will load content here -->
-    </header>
+    <div class="cart-summary">
+      <span class="cart-summary-label">Total:</span>
+      <span class="cart-summary-price">$<span class="cart-total">0.00</span></span>
+    </div>
 
-    <main class="divider">
-      <section class="products">
-        <h2>My Cart</h2>
+    <!-- Proceed to Checkout Button -->
+    <div class="checkout-action">
+      <a href="/checkout/index.html" class="btn-primary">Proceed to Checkout</a>
+    </div>
+  </main>
 
-        <ul class="product-list">
-          <!-- <li class="cart-card divider">
-            <a href="product_pages/marmot-ajax-3.html" class="cart-card__image">
-              <img
-                src="images/tents/marmot-ajax-tent-3-person-3-season-in-pale-pumpkin-terracotta~p~880rr_01~320.jpg"
-                alt="Marmot Ajax tent"
-              />
-            </a>
-            <a href="product_pages/marmot-ajax-3.html">
-              <h2 class="card__name">Marmot Ajax Tent - 3-Person, 3-Season</h2>
-            </a>
-            <p class="cart-card__color">Pale Pumpkin/Terracotta</p>
-            <p class="cart-card__quantity">qty: 1</p>
-            <p class="cart-card__price">$199.99</p>
-          </li>
-          <li class="cart-card divider">
-            <a href="product_pages/marmot-ajax-3.html" class="cart-card__image">
-              <img
-                src="images/tents/the-north-face-talus-tent-4-person-3-season-in-golden-oak-saffron-yellow~p~985rf_01~320.jpg"
-                alt="Talus Tent - 4-Person, 3-Season"
-              />
-            </a>
-            <a href="product_pages/marmot-ajax-3.html">
-              <h2 class="card__name">
-                The North Face Talus Tent - 4-Person, 3-Season
-              </h2></a
-            >
-            <p class="cart-card__color">Golden Oak/Saffron Yellow</p>
-            <p class="cart-card__quantity">qty: 1</p>
-            <p class="cart-card__price">$199.99</p>
-          </li> -->
-        </ul>
-      </section>
-    </main>
+  <footer id="main-footer" class="divider"></footer>
 
-    <footer id="main-footer">
-      <!-- JavaScript will load content here -->
-    </footer>
-  </body>
+  <!-- Correct script paths -->
+  <script type="module" src="/js/cart.mjs"></script>
+</body>
+
 </html>
