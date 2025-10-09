@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, updateCartCount } from "./utils.mjs";
 
 export default class ProductDetails {
 
@@ -37,6 +37,8 @@ export default class ProductDetails {
     }
 
     setLocalStorage("so-cart", cart);
+    //for the count in the backpac icon
+    updateCartCount();
 }
 
   renderProductDetails() {

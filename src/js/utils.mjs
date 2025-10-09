@@ -61,6 +61,7 @@ export async function loadHeaderFooter() {
   // Render the header and footer using renderWithTemplate.
   renderWithTemplate(header, headerElement);
   renderWithTemplate(footer, footerElement);
+  updateCartCount();
 }
 export function alertMessage(message, scroll = true) {
   //create the alert
@@ -87,5 +88,20 @@ export function alertMessage(message, scroll = true) {
   //scroll top if necesariy
   if (scroll) {
     window.scrollTo(0, 0);
+  }
+}
+
+export function updateCartCount() {
+  const cart = getLocalStorage("so-cart") || [];
+  
+  //need count all, not only the length
+  const totalItems = cart.reduce((total, item) => {
+    return total + (item.quantity || 1);
+  }, 0);
+  
+  const cartCountElement = document.getElementById("cart-count");
+  if (cartCountElement) {
+    cartCountElement.textContent = totalItems;
+    cartCountElement.style.display = totalItems > 0 ? "flex" : "none";
   }
 }
