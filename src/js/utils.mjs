@@ -62,3 +62,30 @@ export async function loadHeaderFooter() {
   renderWithTemplate(header, headerElement);
   renderWithTemplate(footer, footerElement);
 }
+export function alertMessage(message, scroll = true) {
+  //create the alert
+  const alert = document.createElement('div');
+  alert.classList.add('alert');
+  
+  //alert content
+  alert.innerHTML = `
+    <p>${message}</p>
+    <span class="alert-close">×</span>
+  `;
+  
+  alert.addEventListener('click', function(e) {
+    if (e.target.classList.contains('alert-close')) {
+      const main = document.querySelector('main');
+      main.removeChild(this);
+    }
+  });
+  
+  //top to main
+  const main = document.querySelector('main');
+  main.prepend(alert);
+  
+  //scroll top if necesariy
+  if (scroll) {
+    window.scrollTo(0, 0);
+  }
+}

@@ -1,4 +1,4 @@
-import { loadHeaderFooter} from "./utils.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
 import CheckoutProcess from "./CheckoutProcess.mjs";
 
 loadHeaderFooter();
@@ -6,10 +6,7 @@ loadHeaderFooter();
 // Initialize checkout process
 const checkout = new CheckoutProcess("so-cart", ".order-summary");
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Load header and footer
-  
-  
+document.addEventListener("DOMContentLoaded", () => {
   // Initialize checkout and show subtotal
   checkout.init();
   
@@ -17,36 +14,26 @@ document.addEventListener('DOMContentLoaded', () => {
   checkout.calculateOrderTotal();
   
   //event listener to zip code field to recalculate totals
-  const zipField = document.getElementById('zip');
+  const zipField = document.getElementById("zip");
   if (zipField) {
-    zipField.addEventListener('blur', () => {
+    zipField.addEventListener("blur", () => {
       checkout.calculateOrderTotal();
     });
   }
   
   //form submission
-  const form = document.getElementById('checkout-form');
+  const form = document.getElementById("checkout-form");
   if (form) {
-    form.addEventListener('submit', async (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
       
-      // Validate all fields are filled
-      const formData = new FormData(form);
-      let allFieldsFilled = true;
+      const myForm = document.forms[0];
+      const chk_status = myForm.checkValidity();
+      myForm.reportValidity();
       
-      for (let [key, value] of formData.entries()) {
-        if (!value.trim()) {
-          allFieldsFilled = false;
-          break;
-        }
+      if(chk_status) {
+        await checkout.checkout();
       }
-      
-      if (!allFieldsFilled) {
-        alert('Please fill in all required fields.');
-        return;
-      }
-      
-      await checkout.checkout();
     });
   }
 });
