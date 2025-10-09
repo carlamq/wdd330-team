@@ -88,5 +88,16 @@ export default class ShoppingCart {
         setLocalStorage(this.key, cart);
         //render
         this.renderCartContents(cart);
+
+        this.displayCartTotal();
+    }
+
+    displayCartTotal() {
+      const cartItems = getLocalStorage(this.key) || [];
+      const total = cartItems.reduce((sum, item) => sum + item.FinalPrice, 0);
+      const totalElement = document.querySelector('#cartTotal');
+      if (totalElement) {
+        totalElement.textContent = `$${total.toFixed(2)}`;
+      }
     }
 }
